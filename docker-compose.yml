@@ -1,0 +1,21 @@
+version: '3.4'
+
+networks:
+  rabbit-net:
+    driver: bridge
+    driver_opts: {com.docker.network.driver.mtu: 1450}
+
+services:
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3-management
+    environment:
+      RABBITMQ_DEFAULT_USER: widgetadmin
+      RABBITMQ_DEFAULT_PASS: trichet6lreRuchkiShire
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - rabbit-net
+volumes:
+  rabbitmq-data:
